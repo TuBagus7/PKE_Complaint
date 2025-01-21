@@ -1,14 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('pages.auth.login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
+Route::post('/login', [LoginController::class, 'store'])->name('auth.login.store');
+
 
 //ketika kita mengakses aplikasi pertama kali akan di arahkan ke route /admin/dashboard
 Route::prefix('admin')->name('admin.')->group(function () {
