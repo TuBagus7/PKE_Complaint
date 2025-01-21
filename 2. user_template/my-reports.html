@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lapor Pak</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="max-w-screen-sm mx-auto bg-white min-vh-100 p-3">
+        <ul class="nav nav-tabs" id="filter-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="terkirim-tab" data-bs-toggle="tab"
+                    data-bs-target="#terkirim-tab-pane" type="button" role="tab" aria-controls="terkirim-tab-pane"
+                    aria-selected="true">Terkirim</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="diproses-tab" data-bs-toggle="tab" data-bs-target="#diproses-tab-pane"
+                    type="button" role="tab" aria-controls="diproses-tab-pane" aria-selected="false">Diproses</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="selesai-tab" data-bs-toggle="tab" data-bs-target="#selesai-tab-pane"
+                    type="button" role="tab" aria-controls="selesai-tab-pane" aria-selected="false">Selesai</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ditolak-tab" data-bs-toggle="tab" data-bs-target="#ditolak-tab-pane"
+                    type="button" role="tab" aria-controls="ditolak-tab-pane" aria-selected="false">Ditolak</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="terkirim-tab-pane" role="tabpanel" aria-labelledby="terkirim-tab"
+                tabindex="0">
+                <div class="d-flex flex-column gap-3 mt-3">
+                    <div class="card card-report border-0 shadow-none">
+                        <a href="details.html" class="text-decoration-none text-dark">
+                            <div class="card-body p-0">
+                                <div class="card-report-image position-relative mb-2">
+                                    <img src="assets/images/report-1.png" alt="">
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-end mb-2">
+                                    <div class="d-flex align-items-center ">
+                                        <img src="assets/images/icons/MapPin.png" alt="map pin" class="icon me-2">
+                                        <p class="text-primary city">
+                                            Pekuncen, Banyumas
+                                        </p>
+                                    </div>
+
+                                    <p class="text-secondary date">
+                                        23 August 2024
+                                    </p>
+                                </div>
+
+                                <h1 class="card-title">
+                                    Jembatan roboh di Pekuncen, Banyumas
+                                </h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="diproses-tab-pane" role="tabpanel" aria-labelledby="diproses-tab"
+                tabindex="0">
+            </div>
+            <div class="tab-pane fade" id="selesai-tab-pane" role="tabpanel" aria-labelledby="selesai-tab" tabindex="0">
+                <div class="d-flex flex-column gap-3 mt-3">
+                    <div class="card card-report border-0 shadow-none">
+                        <a href="details.html" class="text-decoration-none text-dark">
+                            <div class="card-body p-0">
+                                <div class="card-report-image position-relative mb-2">
+                                    <img src="assets/images/report-1.png" alt="">
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-end mb-2">
+                                    <div class="d-flex align-items-center ">
+                                        <img src="assets/images/icons/MapPin.png" alt="map pin" class="icon me-2">
+                                        <p class="text-primary city">
+                                            Pekuncen, Banyumas
+                                        </p>
+                                    </div>
+
+                                    <p class="text-secondary date">
+                                        23 August 2024
+                                    </p>
+                                </div>
+
+                                <h1 class="card-title">
+                                    Jembatan roboh di Pekuncen, Banyumas
+                                </h1>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card card-report border-0 shadow-none">
+                        <a href="details.html" class="text-decoration-none text-dark">
+                            <div class="card-body p-0">
+                                <div class="card-report-image position-relative mb-2">
+                                    <img src="assets/images/report-1.png" alt="">
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-end mb-2">
+                                    <div class="d-flex align-items-center ">
+                                        <img src="assets/images/icons/MapPin.png" alt="map pin" class="icon me-2">
+                                        <p class="text-primary city">
+                                            Pekuncen, Banyumas
+                                        </p>
+                                    </div>
+
+                                    <p class="text-secondary date">
+                                        23 August 2024
+                                    </p>
+                                </div>
+
+                                <h1 class="card-title">
+                                    Jembatan roboh di Pekuncen, Banyumas
+                                </h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="ditolak-tab-pane" role="tabpanel" aria-labelledby="ditolak-tab" tabindex="0">
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-button-container d-flex" onclick="window.location.href = 'take.html'">
+        <button class="floating-button">
+            <i class="fa-solid fa-camera"></i>
+        </button>
+    </div>
+    <nav class="nav-mobile d-flex">
+        <a href="index.html" class="">
+            <i class="fas fa-house"></i>
+            Beranda
+        </a>
+        <a href="my-reports.html" class="active">
+            <i class="fas fa-solid fa-clipboard-list"></i>
+            Laporanmu
+        </a>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <a href="" class="">
+            <i class="fas fa-bell"></i>
+            Notifikasi
+        </a>
+        <a href="profile.html" class="">
+            <i class="fas fa-user"></i>
+            Profil
+        </a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script>
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('lottie'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'assets/lottie/not-found.json'
+        })
+    </script>
+</body>
+
+</html>

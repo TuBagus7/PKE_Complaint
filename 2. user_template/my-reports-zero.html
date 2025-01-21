@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lapor Pak</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="max-w-screen-sm mx-auto bg-white min-vh-100 p-3">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="height: 75vh" id="no-reports">
+            <div id="lottie"></div>
+            <h5 class="mt-3">Belum ada laporan</h5>
+            <a href="" class="btn btn-primary py-2 px-4 mt-3">
+                Buat Laporan
+            </a>
+        </div>
+    </div>
+
+    <div class="floating-button-container d-flex" onclick="window.location.href = 'take.html'">
+        <button class="floating-button">
+            <i class="fa-solid fa-camera"></i>
+        </button>
+    </div>
+    <nav class="nav-mobile d-flex">
+        <a href="index.html" class="">
+            <i class="fas fa-house"></i>
+            Beranda
+        </a>
+        <a href="my-reports.html" class="active">
+            <i class="fas fa-solid fa-clipboard-list"></i>
+            Laporanmu
+        </a>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <a href="" class="">
+            <i class="fas fa-bell"></i>
+            Notifikasi
+        </a>
+        <a href="profile.html" class="">
+            <i class="fas fa-user"></i>
+            Profil
+        </a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script>
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('lottie'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'assets/lottie/not-found.json'
+        })
+    </script>
+</body>
+
+</html>
