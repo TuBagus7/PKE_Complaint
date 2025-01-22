@@ -18,7 +18,7 @@
             <hr class="flex-grow-1">
         </div>
 
-        <form action="{{route ('auth.login.store')}}" method="POST" class="mt-4">
+        <form action="{{route ('login.store')}}" method="POST" class="mt-4">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
