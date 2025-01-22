@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\Resident;
 use App\Interfaces\AuthRepositoryInterface;
+use App\Interfaces\ResidentRepositoryInterface;
 use App\Repositories\AuthRepository;
+use App\Repositories\ResidentRepository;
+use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -16,6 +19,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             AuthRepositoryInterface::class,
             AuthRepository::class
+        );
+        $this->app->bind(
+            ResidentRepositoryInterface::class,
+            ResidentRepository::class
         );
     }
 

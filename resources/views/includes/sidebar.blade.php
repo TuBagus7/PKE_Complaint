@@ -21,9 +21,9 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="list.html">
+                <a class="nav-link" href="{{route('admin.resident.index')}}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>List</span></a>
+                    <span>Data Pegawai</span></a>
             </li>
 
 
