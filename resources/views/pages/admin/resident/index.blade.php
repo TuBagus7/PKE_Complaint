@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid">
     <!-- Tombol Tambah Data -->
-    <a href="create.html" class="btn btn-primary mb-3">Tambah Data</a>
+    <a href="{{route('admin.resident.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
 
     <!-- Card -->
     <div class="card shadow mb-4">

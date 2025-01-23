@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreResidentRequest;
 
 class ResidentController extends Controller
 {
@@ -26,15 +27,21 @@ class ResidentController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.resident.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreResidentRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $data['avatar'] = $request->file('avatar')->store('assets/avatar','public');
+
+        $this->residentRepository->createResident($data);
+
+        return redirect()->route('admin.resident.index');
     }
 
     /**
