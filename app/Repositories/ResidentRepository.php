@@ -47,6 +47,9 @@ public function getResidentsById(int $id)
     public function deleteResident(int $id)
     {
         $resident = $this->getResidentsById($id);
+
+        $resident->user()->delete();
+
         return $resident->delete();
     }
 }

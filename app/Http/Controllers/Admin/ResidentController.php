@@ -87,6 +87,8 @@ class ResidentController extends Controller
      */
     public function destroy(string $id)
     {
-        // 
+        $this->residentRepository->deleteResident((int)$id);
+
+        return redirect()->route('admin.resident.index');
     }
 }
