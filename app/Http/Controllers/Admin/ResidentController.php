@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\ResidentRepositoryInterface;
-use Illuminate\Http\Request;
-use App\Http\Requests\StoreResidentRequest;
+use App\Http\Requests\StoreResidentRequest;     
+use App\Http\Requests\UpdateResidentRequest;
 
 class ResidentController extends Controller
 {
@@ -57,15 +57,27 @@ class ResidentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $resident = $this->residentRepository->getResidentsById((int)$id);
+
+        return view('pages.admin.resident.edit', compact('resident'));
     }
+
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(UpdateResidentRequest $request, string $id)
+    { 
+    $data = $request->validated();
+
+        if($request->file('avatar')) {
+            $data['avatar'] = $request->file('avatar')->store('assets/avatar','public');
+        }
+
+        $this->residentRepository->updateResident((int)$id, $data);
+
+        return redirect()->route('admin.resident.index');
     }
 
     /**

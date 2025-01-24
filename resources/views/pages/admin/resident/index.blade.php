@@ -34,12 +34,13 @@
                                 <img src="{{ asset('storage/' . $resident->avatar) }}" alt="avatar" width="100">
                             </td>
                             <td>
-                                <a href="edit.html" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{route('admin.resident.edit', $resident->id)}}" 
+                                class="btn btn-warning btn-sm">Edit</a>  
+                                
                                 <a href="show.html" class="btn btn-info btn-sm">Show</a>
-                                <form action="" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                
+                                <form action ="" method="POST" class="d-inline">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
                             </td>
                         </tr>

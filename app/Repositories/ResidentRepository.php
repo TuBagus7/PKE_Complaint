@@ -13,10 +13,11 @@ class ResidentRepository implements ResidentRepositoryInterface
         return Resident::all();
     }
 
-    public function getResidentsById(int $id)
-    {
-        return Resident::find('id', $id)->first();  
-    }
+public function getResidentsById(int $id)
+{
+    return Resident::find($id);
+}
+
 
     public function createResident(array $data)
     {
@@ -32,6 +33,13 @@ class ResidentRepository implements ResidentRepositoryInterface
     public function updateResident(int $id, array $data)
     {
         $resident = $this->getResidentsById($id);
+
+        $resident->user()->update([
+            'name'=>$data['name'],
+            'email'=>$data['email'],
+            'password'=>isset($data['password'])?bcrypt($data['password']): $resident->user->password,
+        ]);
+
         return $resident->update($data);
     }
 
