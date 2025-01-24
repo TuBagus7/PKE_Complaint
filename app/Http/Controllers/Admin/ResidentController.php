@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Interfaces\ResidentRepositoryInterface;
 use App\Http\Requests\StoreResidentRequest;     
 use App\Http\Requests\UpdateResidentRequest;
+use RealRashid\SweetAlert\Facades\Alert as Swal;
+use Illuminate\Support\Facades\Storage;
 
 class ResidentController extends Controller
 {
@@ -15,7 +17,11 @@ class ResidentController extends Controller
     {
         $this->residentRepository = $residentRepository;
     }
-    public function index()
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): \Illuminate\View\View
     {
         $residents = $this->residentRepository->getAllResidents();
 
@@ -25,7 +31,7 @@ class ResidentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): \Illuminate\View\View
     {
         return view('pages.admin.resident.create');
     }
@@ -33,13 +39,21 @@ class ResidentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreResidentRequest $request)
+    public function store(StoreResidentRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->validated();
 
-        $data['avatar'] = $request->file('avatar')->store('assets/avatar','public');
+        if ($request->hasFile('avatar')) {
+            $data['avatar'] = $request->file('avatar')->store('assets/avatar', 'public');
+        }
 
         $this->residentRepository->createResident($data);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Pegawai Berhasil Ditambahkan', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
 
         return redirect()->route('admin.resident.index');
     }
@@ -47,9 +61,9 @@ class ResidentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id): \Illuminate\View\View
     {
-        $resident = $this->residentRepository->getResidentsById((int)$id);
+        $resident = $this->residentRepository->getResidentsById($id);
 
         return view('pages.admin.resident.show', compact('resident'));
     }
@@ -57,27 +71,35 @@ class ResidentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id): \Illuminate\View\View
     {
-        $resident = $this->residentRepository->getResidentsById((int)$id);
+        $resident = $this->residentRepository->getResidentsById($id);
 
         return view('pages.admin.resident.edit', compact('resident'));
     }
 
-
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateResidentRequest $request, string $id)
-    { 
-    $data = $request->validated();
+    public function update(UpdateResidentRequest $request, int $id): \Illuminate\Http\RedirectResponse
+    {
+        $data = $request->validated();
 
-        if($request->file('avatar')) {
-            $data['avatar'] = $request->file('avatar')->store('assets/avatar','public');
+        if ($request->hasFile('avatar')) {
+            $resident = $this->residentRepository->getResidentsById($id);
+            if ($resident->avatar) {
+                Storage::disk('public')->delete($resident->avatar);
+            }
+            $data['avatar'] = $request->file('avatar')->store('assets/avatar', 'public');
         }
 
-        $this->residentRepository->updateResident((int)$id, $data);
+        $this->residentRepository->updateResident($id, $data);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Pegawai Berhasil Diubah', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
 
         return redirect()->route('admin.resident.index');
     }
@@ -85,9 +107,21 @@ class ResidentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id): \Illuminate\Http\RedirectResponse
     {
-        $this->residentRepository->deleteResident((int)$id);
+        $resident = $this->residentRepository->getResidentsById($id);
+
+        if ($resident->avatar) {
+            Storage::disk('public')->delete($resident->avatar);
+        }
+
+        $this->residentRepository->deleteResident($id);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Pegawai Berhasil Dihapus', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
 
         return redirect()->route('admin.resident.index');
     }
