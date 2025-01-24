@@ -12,8 +12,17 @@
                             <form action="{{route('admin.resident.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="name">Nama</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}">
+                                    <label for="name">Nama
+                                        <i 
+                                            class="fas fa-question-circle" 
+                                            data-toggle="tooltip" 
+                                            data-placement="right" 
+                                            title="Contoh format: Andi (Staf FEKON)"
+                                            style="cursor: pointer; color: #007bff;"
+                                        ></i>
+                                    </label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" 
+                                    placeholder="Sertakan Divisi Pegawai">
 
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -59,4 +68,11 @@
                             </form>
                         </div>
                     </div>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
 @endsection

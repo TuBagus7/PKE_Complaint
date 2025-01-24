@@ -37,7 +37,7 @@
                                 <a href="{{route('admin.resident.edit', $resident->id)}}" 
                                 class="btn btn-warning btn-sm">Edit</a>  
                                 
-                                <a href="show.html" class="btn btn-info btn-sm">Show</a>
+                                <a href="{{route('admin.resident.show', $resident->id)}}" class="btn btn-info btn-sm">Show</a>
                                 
                                 <form action ="" method="POST" class="d-inline">
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
