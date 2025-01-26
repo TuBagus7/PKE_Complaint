@@ -81,8 +81,7 @@ class ResidentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateResidentRequest $request, int $id): \Illuminate\Http\RedirectResponse
-    {
+    public function update(UpdateResidentRequest $request, int $id){
         $data = $request->validated();
 
         if ($request->hasFile('avatar')) {
