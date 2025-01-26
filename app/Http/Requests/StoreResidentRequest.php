@@ -22,7 +22,7 @@ class StoreResidentRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|file',
         ];
     }
 }

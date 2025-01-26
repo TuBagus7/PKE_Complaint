@@ -29,8 +29,8 @@
     </li>
 
     <!-- Nav Item - Data Kategori -->
-    <li class="nav-item {{ request()->is('admin/report-category*') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.report-category.index') }}">
+    <li class="nav-item {{ request()->is('admin/category*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.category.index') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Data Kategori</span>
         </a>

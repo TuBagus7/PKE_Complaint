@@ -18,6 +18,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('/resident', ResidentController::class);
-    Route::resource('/report-category', ReportCategoryController::class);
+    Route::resource('/category', ReportCategoryController::class);
 
 });

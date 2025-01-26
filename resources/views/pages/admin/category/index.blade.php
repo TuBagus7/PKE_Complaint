@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid">
     <!-- Tombol Tambah Data -->
-    <a href="{{route('admin.report-category.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
+    <a href="{{route('admin.category.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
 
     <!-- Card -->
     <div class="card shadow mb-4">
@@ -32,12 +32,12 @@
                                 <img src="{{ asset('storage/' . $category->image) }}" alt="image" width="100">
                             </td>
                             <td>
-                                <a href="{{route('admin.report-category.edit', $category->id)}}" 
+                                <a href="{{route('admin.category.edit', $category->id)}}" 
                                 class="btn btn-warning btn-sm">Edit</a>  
                                 
-                                <a href="{{route('admin.report-category.show', $category->id)}}" class="btn btn-info btn-sm">Show</a>
+                                <a href="{{route('admin.category.show', $category->id)}}" class="btn btn-info btn-sm">Show</a>
                                 
-                                <form action ="{{route('admin.report-category.destroy', $category->id)}}" method="POST" class="d-inline">
+                                <form action ="{{route('admin.category.destroy', $category->id)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
