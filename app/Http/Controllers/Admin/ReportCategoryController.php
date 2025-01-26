@@ -60,7 +60,9 @@ class ReportCategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = $this->reportCategoryRepository->getReportCategoryById($id);
+
+        return view('pages.admin.category.show', compact('category'));
     }
 
     /**
@@ -104,6 +106,20 @@ class ReportCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = $this->reportCategoryRepository->getReportCategoryById($id);
+
+        if ($category->image) {
+            Storage::disk('public')->delete($category->image);
+        }
+
+        $this->reportCategoryRepository->deleteReportCategory($id);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Kategori Berhasil Dihapus', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
+
+        return redirect()->route('admin.category.index');
     }
 }
