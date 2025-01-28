@@ -3,16 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\ReportCategoryRepositoryInterface;
+use App\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Interfaces\ReportRepositoryInterface;
 
 class ReportController extends Controller
 {
     private ReportRepositoryInterface $reportRepository;
+    private ReportCategoryRepositoryInterface $reportCategoryRepository;
+    private ResidentRepositoryInterface $residentRepository;
 
-    public function __construct(ReportRepositoryInterface $reportRepository)
+    public function __construct(
+        ReportRepositoryInterface $reportRepository,
+        ReportCategoryRepositoryInterface $reportCategoryRepository,
+        ResidentRepositoryInterface $residentRepository)
     {
         $this->reportRepository = $reportRepository;
+        $this->reportCategoryRepository = $reportCategoryRepository;
+        $this->residentRepository = $residentRepository;
     }
     public function index()
     {
@@ -26,7 +35,9 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        $residents = $this->residentRepository->getAllResidents();
+        $categories = $this->reportCategoryRepository->getAllReportCategories();
+        return view('pages.admin.report.create', compact('residents', 'categories'));
     }
 
     /**
