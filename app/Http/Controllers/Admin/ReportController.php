@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Http\Requests\StoreReportRequest;
 use RealRashid\SweetAlert\Facades\Alert as Swal;
+use App\Http\Requests\UpdateReportRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class ReportController extends Controller
 {
@@ -76,15 +79,37 @@ class ReportController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $report = $this->reportRepository->getReportById($id);
+        $residents = $this->residentRepository->getAllResidents();
+        $categories = $this->reportCategoryRepository->getAllReportCategories();
+
+        return view('pages.admin.report.edit', compact('report', 'residents', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateReportRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $report = $this->reportRepository->getReportById($id);
+            if ($report->image) {
+                Storage::disk('public')->delete($report->image);
+            }
+            $data['image'] = $request->file('image')->store('assets/report', 'public');
+        }
+
+        $this->reportRepository->updateReport($id, $data);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Laporan Berhasil Diubah', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
+
+        return redirect()->route('admin.report.index');
     }
 
     /**

@@ -16,6 +16,7 @@ class UpdateResidentRequest extends FormRequest
     public function rules(): array
     {
         return [
+            //nullable === Boleh Kosong
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'nullable|min:8',
