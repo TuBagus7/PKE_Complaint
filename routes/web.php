@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ResidentController;
 use App\Http\Controllers\Admin\ReportCategoryController;
+use App\Http\Controllers\Admin\ReportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,8 +17,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    
     Route::resource('/resident', ResidentController::class);
     Route::resource('/category', ReportCategoryController::class);
-
+    Route::resource('/report', ReportController::class);
 });
