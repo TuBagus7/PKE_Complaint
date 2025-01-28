@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Resident;
 use App\Interfaces\AuthRepositoryInterface;
 use App\Interfaces\ResidentRepositoryInterface;
 use App\Repositories\AuthRepository;
@@ -10,6 +9,8 @@ use App\Repositories\ResidentRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Repositories\ReportCategoryRepository;
+use App\Interfaces\ReportRepositoryInterface;
+use App\Repositories\ReportRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ReportCategoryRepositoryInterface::class,
             ReportCategoryRepository::class
+        );
+
+        $this->app->bind(
+            ReportRepositoryInterface::class,
+            ReportRepository::class
         );
     }
 
