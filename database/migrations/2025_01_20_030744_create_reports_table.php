@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('image');
-            $table->string('latitiude');
+            $table->string('latitude');
             $table->string('longitude');
             $table->string('address');
             $table->softDeletes();

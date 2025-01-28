@@ -8,6 +8,7 @@ use App\Interfaces\ResidentRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Http\Requests\StoreReportRequest;
+use RealRashid\SweetAlert\Facades\Alert as Swal;
 
 class ReportController extends Controller
 {
@@ -46,7 +47,20 @@ class ReportController extends Controller
      */
     public function store(StoreReportRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['code'] = 'PKE-LAPOR' . mt_rand(100000, 999999);
+        $data['image'] = $request->file('image')->store('assets/report', 'public'); // Upload file image
+
+        $this->reportRepository->createReport($data);   
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Laporan Berhasil Ditambahkan', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
+
+        // Redirect ke rute yang benar
+        return redirect()->route('admin.report.index');
     }
 
     /**
