@@ -18,8 +18,12 @@
                     <td>{{ $report->code }}</td>
                 </tr>
                 <tr>
+                    <td>Email</td>
+                    <td>{{ $report->resident->user->email }}</td>
+                </tr>
+                <tr>
                     <td>Pelapor</td>
-                    <td>{{ $report->resident->user->email }} - {{ $report->resident->user->name }}</td>
+                    <td>{{ $report->resident->user->name }}</td>
                 </tr>
                 <tr>
                     <td>Kategori Laporan</td>

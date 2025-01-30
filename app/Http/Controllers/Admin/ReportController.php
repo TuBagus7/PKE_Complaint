@@ -119,6 +119,21 @@ class ReportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $report = $this->reportRepository->getReportById($id);
+
+        if ($report->image) {
+            Storage::disk('public')->delete($report->image);
+        }
+
+        $this->reportRepository->deleteReport($id);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Laporan Berhasil Dihapus', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
+
+        return redirect()->route('admin.report.index');
+    
     }
 }
