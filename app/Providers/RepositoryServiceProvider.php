@@ -11,6 +11,8 @@ use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Repositories\ReportCategoryRepository;
 use App\Interfaces\ReportRepositoryInterface;
 use App\Repositories\ReportRepository;
+use App\Interfaces\ReportStatusRepositoryInterface;
+use App\Repositories\ReportStatusRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -36,6 +38,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ReportRepositoryInterface::class,
             ReportRepository::class
+        );
+
+        $this->app->bind(
+            ReportStatusRepositoryInterface::class,
+            ReportStatusRepository::class
         );
     }
 
