@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ResidentController;
 use App\Http\Controllers\Admin\ReportCategoryController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ReportStatusController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,5 +21,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     
     Route::resource('/resident', ResidentController::class);
     Route::resource('/category', ReportCategoryController::class);
+    Route::resource('/report', ReportController::class);
+    Route::resource('/report-status', ReportStatusController::class);
     Route::resource('/report', ReportController::class);
 });

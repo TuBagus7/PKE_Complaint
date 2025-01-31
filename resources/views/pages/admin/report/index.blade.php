@@ -3,7 +3,7 @@
 @section('title', 'Data Laporan')
 
 @section('content')
-<div class="container-fluid">
+
     <!-- Tombol Tambah Data -->
     <a href="{{route('admin.report.create')}}" class="btn btn-primary mb-3">Tambah Data</a>
 
@@ -56,5 +56,7 @@
             </div>
         </div>
     </div>
-</div>
+
+
+    
 @endsection
