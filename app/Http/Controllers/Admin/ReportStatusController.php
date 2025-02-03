@@ -116,6 +116,17 @@ class ReportStatusController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $status = $this->reportStatusRepository->getReportStatusById($id);
+
+        $this->reportStatusRepository->deleteReportStatus($id);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Progress Laporan Berhasil Dihapus', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
+
+        return redirect()->route('admin.report.show', $status->report_id);
     }
+    
 }
