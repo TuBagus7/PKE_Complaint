@@ -22,6 +22,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('/resident', ResidentController::class);
     Route::resource('/category', ReportCategoryController::class);
     Route::resource('/report', ReportController::class);
-    Route::resource('/report-status', ReportStatusController::class);
-    Route::resource('/report', ReportController::class);
+
+    // Perbaikan: Pastikan route `create` dideklarasikan sebelum `Route::resource()`
+    Route::get('/report-status/create/{reportId}', [ReportStatusController::class, 'create'])->name('report-status.create');
+    
+    Route::resource('/report-status', ReportStatusController::class)->except('create');
 });

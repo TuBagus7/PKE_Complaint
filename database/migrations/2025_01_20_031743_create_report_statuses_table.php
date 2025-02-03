@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('report_id');
             $table->string('image')->nullable();
-            $table->enum('status', ['delivered', 'in_process', 'completed', 'rejected']);
+            $table->enum('status', ['delivered', 'progress', 'completed', 'rejected']);
             $table->longText('description');
             $table->softDeletes();
             $table->timestamps();

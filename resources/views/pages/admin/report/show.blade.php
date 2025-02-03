@@ -64,33 +64,37 @@
     </div>
 
     <!-- Progress Laporan -->
-     <a href="{{route('admin.report.create')}}" class="btn btn-primary mb-3">Tambah Progress</a>
     <div class="card shadow mb-5">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Progress Laporan</h6>
         </div>
         <div class="card-body">
-             <div class="card-body">
+            <a href="{{route('admin.report-status.create', $report->id)}}" class="btn btn-primary mb-3">
+            Tambah Progress</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Bukti</th>
-                            <th>Deskripsi</th>
                             <th>Status</th>
+                            <th>Deskripsi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($report->reportStatuses as $index => $status)
+                        @foreach($report->reportStatuses as $status)
                             <tr>
-                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
+                                    @if ($status->image)
                                     <img src="{{ asset('storage/' . $status->image) }}" alt="image" width="100">
+                                    @else
+                                    -
+                                    @endif
                                 </td>
-                                <td>{{ $status->description }}</td>
                                 <td>{{ $status->status }}</td>
+                                <td>{{ $status->description }}</td>
                                 <td>
                                     <a href="{{ route('admin.report-status.edit', $status->id) }}" class="btn btn-warning btn-sm">Edit</a>  
                                     <a href="{{ route('admin.report-status.show', $status->id) }}" class="btn btn-info btn-sm">Show</a>

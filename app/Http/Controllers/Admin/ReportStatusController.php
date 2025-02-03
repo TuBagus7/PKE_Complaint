@@ -3,33 +3,67 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreReportStatusRequest;
+use App\Interfaces\ReportRepositoryInterface;
+use App\Interfaces\ReportStatusRepositoryInterface;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert as Swal;
 
 class ReportStatusController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    private ReportRepositoryInterface $reportRepository;
+    private ReportStatusRepositoryInterface $reportStatusRepository;
+
+    public function __construct(
+        ReportRepositoryInterface $reportRepository,
+        ReportStatusRepositoryInterface $reportStatusRepository
+    ) {
+        $this->reportRepository = $reportRepository;
+        $this->reportStatusRepository = $reportStatusRepository;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan daftar status laporan.
      */
-    public function create()
+    public function index()
     {
-        //
+        $reportStatuses = $this->reportStatusRepository->getAllReportStatuses();
+        return view('pages.admin.report-status.index', compact('reportStatuses'));
     }
+
+    /**
+     * Menampilkan form untuk menambah status laporan berdasarkan laporan tertentu.
+     */
+    public function create($reportId)
+{
+    // Mengambil data laporan berdasarkan ID
+    $report = $this->reportRepository->getReportById($reportId);
+
+    
+    return view('pages.admin.report-status.create', compact('report'));
+}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreReportStatusRequest $request)
+{
+    $data = $request->validated();
+    if ($request->image){
+    $data['image'] = $request->file('image')->store('assets/report-status/image', 'public'); // Upload file image
     }
+    $this->reportStatusRepository->createReportStatus($data);   
+
+    // SweetAlert untuk pesan sukses
+    Swal::toast('Data Progress Laporan Berhasil Ditambahkan', 'success')
+        ->position('top-end')
+        ->timerProgressBar()
+        ->autoClose(3000);
+
+    // Redirect ke rute yang benar
+    return redirect()->route('admin.report.show', $request->report_id);
+}
+
 
     /**
      * Display the specified resource.
