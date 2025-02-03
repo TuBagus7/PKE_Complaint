@@ -8,6 +8,8 @@ use App\Interfaces\ReportRepositoryInterface;
 use App\Interfaces\ReportStatusRepositoryInterface;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert as Swal;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateReportStatusRequest;
 
 class ReportStatusController extends Controller
 {
@@ -78,15 +80,35 @@ class ReportStatusController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $status = $this->reportStatusRepository->getReportStatusById($id);
+
+        return view('pages.admin.report-status.edit', compact('status'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateReportStatusRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $status = $this->reportStatusRepository->getReportStatusById($id);
+            if ($status->image) {
+                Storage::disk('public')->delete($status->image);
+            }
+            $data['image'] = $request->file('image')->store('assets/report-status/image', 'public');
+        }
+
+        $this->reportStatusRepository->updateReportStatus($id, $data);
+
+        // SweetAlert untuk pesan sukses
+        Swal::toast('Data Progress Laporan Berhasil Diubah', 'success')
+            ->position('top-end')
+            ->timerProgressBar()
+            ->autoClose(3000);
+
+        return redirect()->route('admin.report.show', $request->report_id);
     }
 
     /**
