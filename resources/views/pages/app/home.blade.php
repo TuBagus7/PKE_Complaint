@@ -26,7 +26,7 @@
         <div class="d-flex flex-column gap-3 mt-3">
             @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">
-                    <a href="details.html" class="text-decoration-none text-dark">
+                    <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
                                 <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-full h-auto object-fit:contain">
@@ -41,7 +41,7 @@
                                     <div class="badge-status done">Selesai</div>
                                 @endif
                                 @if ($report->reportStatuses->last()->status == 'rejected')
-                                    <div class="badge-status rejected">Ditolak</div>
+                                    <div class="badge-status rejected" style="background-color: #FF0000">Ditolak</div>
                                 @endif
                             </div>
 

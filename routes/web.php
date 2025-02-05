@@ -8,8 +8,11 @@ use App\Http\Controllers\Admin\ReportCategoryController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ReportStatusController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\ReportController as UserReportController;
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
+
+Route::get('report/{code}', [UserReportController::class, 'show'])->name('report.show');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
