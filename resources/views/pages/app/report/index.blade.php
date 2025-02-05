@@ -5,7 +5,7 @@
 @section('content')
 <div class="py-3" id="reports">
             <div class="d-flex justify-content-between align-items-center">
-                <p class="text-muted">{{$reports->count()}} Pengaduan</p>
+                <p class="text-muted">{{$reports->count()}} Pengaduan Di </p>
 
                 <button class="btn btn-filter" type="button">
                     <i class="fa-solid fa-filter me-2"></i>
@@ -13,7 +13,9 @@
                 </button>
 
             </div>
-
+                @if(request()->category)
+                    Kategori {{request()->category}}
+                @endif
             <div class="d-flex flex-column gap-3 mt-3">
                 @foreach ($reports as $report)
                 <div class="card card-report border-0 shadow-none">

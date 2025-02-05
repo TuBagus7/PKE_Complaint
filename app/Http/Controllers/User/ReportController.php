@@ -18,8 +18,12 @@ class ReportController extends Controller
     }
 
 
-    public function index(){
+    public function index(Request $request){
+        if ($request->category) {
+        $reports = $this->reportRepository->getReportsByCategory($request->category);
+        }else{
         $reports = $this->reportRepository->getAllReports();
+        }
         return view('pages.app.report.index', compact('reports'));
     }
     public function show($code){
