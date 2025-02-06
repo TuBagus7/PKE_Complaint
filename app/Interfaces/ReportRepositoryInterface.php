@@ -9,10 +9,11 @@ interface ReportRepositoryInterface{
 
     public function getReportById(int $id);
 
-    
+
     public function getReportsByCategory(string $category);
-    
+
     public function getReportByCode(string $code);
+
     public function createReport(array $data);
 
     public function updateReport(int $id, array $data);

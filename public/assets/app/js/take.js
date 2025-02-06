@@ -27,6 +27,6 @@ function takeSnapshot() {
     var dataURL = canvas.toDataURL('image/png');
     localStorage.setItem('image', dataURL);
 
-    window.location.href = '/preview.html';
+    window.location.href = '/preview';
 }
 
