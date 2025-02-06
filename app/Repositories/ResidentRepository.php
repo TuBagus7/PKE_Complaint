@@ -27,6 +27,8 @@ public function getResidentsById(int $id)
             'password'=>bcrypt($data['password'])
         ]);
 
+        $user->assignRole('resident');
+
         return $user->resident()->create($data);
     }
 

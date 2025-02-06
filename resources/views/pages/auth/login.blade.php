@@ -47,7 +47,7 @@
             </button>
 
             <div class="d-flex justify-content-between mt-3">
-                <a href="signup.html" class="text-decoration-none text-primary">Belum punya akun?</a>
+                <a href="{{route('register')}}" class="text-decoration-none text-primary">Belum punya akun?</a>
                 <a href="" class="text-decoration-none text-primary">Lupa
                     Password</a>
             </div>

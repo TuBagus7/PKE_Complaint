@@ -20,8 +20,15 @@
             <i class="fas fa-bell"></i>
             Notifikasi
         </a>
+        @auth
         <a href="profile.html" class="">
             <i class="fas fa-user"></i>
             Profil
         </a>
+        @else
+        <a href="{{route('register')}}" class="">
+            <i class="fas fa-right-to-bracket"></i>
+            Daftar
+        </a>
+        @endauth
     </nav>
