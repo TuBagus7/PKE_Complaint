@@ -21,7 +21,7 @@
             Notifikasi
         </a>
         @auth
-        <a href="profile.html" class="">
+        <a href="{{route('profile')}}" class="">
             <i class="fas fa-user"></i>
             Profil
         </a>

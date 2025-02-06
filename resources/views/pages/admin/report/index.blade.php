@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $report->code}}</td>
-                            <td>{{ $report->resident->user->name}}</td>
+                            <td>{{ optional(optional($report->resident)->user)->name ?? 'Tidak ada pelapor' }}</td>
                             <td>{{ $report->reportCategory->name}}</td>
                             <td>{{ $report->title}}</td>
                             <td>
