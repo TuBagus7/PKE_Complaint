@@ -21,7 +21,9 @@ Route::get('report/{code}', [UserReportController::class, 'show'])->name('report
 Route::middleware('auth')->group(function () {
     Route::get('/take-report', [UserReportController::class, 'take'])->name('report.take');
     Route::get('/preview', [UserReportController::class, 'preview'])->name('report.preview');
-    Route::get('/creat-report', [UserReportController::class, 'create'])->name('report.create');
+    Route::get('/create-report', [UserReportController::class, 'create'])->name('report.create');
+    Route::post('/create-report', [UserReportController::class, 'store'])->name('report.store');
+    Route::get('/report-success', [UserReportController::class, 'success'])->name('report.success');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 

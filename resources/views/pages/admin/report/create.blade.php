@@ -91,7 +91,8 @@
 
                                 <div class="form-group">
                                     <label for="latitude">Latitude</label>
-                                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" 
+                                    <input type="hidden" class="form-control @error('latitude') is-invalid @enderror" id="lat" name="latitude">
+                                    
                                     name="latitude" value="{{old('latitude')}}">
 
                                     @error('latitude')
@@ -103,7 +104,8 @@
 
                                 <div class="form-group">
                                     <label for="longitude">Longitude</label>
-                                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" 
+                                    <input type="hidden" class="form-control @error('longitude') is-invalid @enderror"id="lng" name="longitude">
+                                    
                                     name="longitude" value="{{old('longitude')}}">
 
                                     @error('longitude')
