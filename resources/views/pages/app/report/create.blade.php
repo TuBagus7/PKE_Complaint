@@ -80,17 +80,17 @@
         </div>
 
         <div class="mb-3">
-            <label for="location" class="form-label">Lokasi Lengkap</label>
-            <textarea type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location"
-                value="{{ old('location') }}" rows="5"></textarea>
+            <label for="address" class="form-label">Lokasi Lengkap</label>
+            <textarea type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address"
+                value="{{ old('address') }}" rows="5"></textarea>
 
-            @error('location')
+            @error('address')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
-
         </div>
+
 
         <button class="btn btn-primary w-100 mt-2" type="submit" color="primary">
             Laporkan

@@ -24,7 +24,7 @@
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: '{{asset('assets/app/lottie/success.json')}}'
+            path: "{{ asset('assets/app/lottie/success.json') }}"
         })
     </script>
 @endsection

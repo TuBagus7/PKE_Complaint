@@ -37,7 +37,12 @@ class ReportRepository implements ReportRepositoryInterface
 
     public function createReport(array $data)
     {
-        return Report::create($data);
+        $report =  Report::create($data);
+        $report ->reportStatuses()->create([
+            'status' => 'delivered',
+            'description' => 'Laporan Berhasil Di Terima'
+        ]);
+        return $report;
     }
 
     public function updateReport(int $id, array $data)

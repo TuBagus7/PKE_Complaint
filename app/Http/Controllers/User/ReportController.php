@@ -65,3 +65,4 @@ class ReportController extends Controller
         return view('pages.app.report.success');
     }
 }
+
