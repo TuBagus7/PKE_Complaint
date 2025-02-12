@@ -32,7 +32,7 @@
                                         </option>
                                         @endforeach
                                     </select>
-                                    @error('residentid')
+                                    @error('resident_id')
                                         <div class="invalid-feedback">
                                             {{$message}}
                                         </div>
@@ -91,9 +91,7 @@
 
                                 <div class="form-group">
                                     <label for="latitude">Latitude</label>
-                                    <input type="hidden" class="form-control @error('latitude') is-invalid @enderror" id="lat" name="latitude">
-                                    
-                                    name="latitude" value="{{old('latitude')}}">
+                                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="lat" name="latitude" value="{{old('latitude')}}">
 
                                     @error('latitude')
                                         <div class="invalid-feedback">
@@ -104,9 +102,7 @@
 
                                 <div class="form-group">
                                     <label for="longitude">Longitude</label>
-                                    <input type="hidden" class="form-control @error('longitude') is-invalid @enderror"id="lng" name="longitude">
-                                    
-                                    name="longitude" value="{{old('longitude')}}">
+                                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="lng" name="longitude" value="{{old('longitude')}}">
 
                                     @error('longitude')
                                         <div class="invalid-feedback">
@@ -126,10 +122,6 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="tanggal">Tanggal Data</label>
-                                    <input type="date" class="form-control" id="tanggal" name="tanggal">
-                                </div> -->
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -139,6 +131,5 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
-
 
 @endsection
