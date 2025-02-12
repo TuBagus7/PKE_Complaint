@@ -8,7 +8,7 @@
             <i class="fas fa-house"></i>
             Beranda
         </a>
-        <a href="my-reports.html" class="">
+        <a href="{{route('report.my-report', ['status' => 'delivered'])}}" class="">
             <i class="fas fa-solid fa-clipboard-list"></i>
             Laporanmu
         </a>

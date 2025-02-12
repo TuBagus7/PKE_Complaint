@@ -33,6 +33,13 @@ class ReportController extends Controller
         }
         return view('pages.app.report.index', compact('reports'));
     }
+
+    public function myReport(Request $request){ 
+        $reports = $this->reportRepository->getReportsByResidentId($request-> status);
+        return view('pages.app.report.my-report', compact('reports'));
+    }
+
+
     public function show($code){
         $report = $this->reportRepository->getReportByCode($code);
         return view('pages.app.report.show', compact('report'));
