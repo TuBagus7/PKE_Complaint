@@ -15,14 +15,15 @@ class HomeController extends Controller
     private ReportCategoryRepositoryInterface $reportCategoryRepository;
 
     public function __construct(
+    ReportRepositoryInterface $reportRepository,
+    ReportCategoryRepositoryInterface $reportCategoryRepository
+)
+{
+    $this->middleware('auth'); // 🔒 Tambahkan ini
+    $this->reportCategoryRepository = $reportCategoryRepository;
+    $this->reportRepository = $reportRepository;
+}
 
-        ReportRepositoryInterface $reportRepository,
-        ReportCategoryRepositoryInterface $reportCategoryRepository
-    )
-    {
-        $this->reportCategoryRepository = $reportCategoryRepository;
-        $this->reportRepository = $reportRepository;
-    }
 
     public function index()
     {
