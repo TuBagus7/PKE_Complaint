@@ -9,8 +9,8 @@
             <h6 class="fw-bold text-center mb-2">Yeay! Laporan kamu berhasil dibuat</h6>
             <p class="text-center mb-4">Kamu bisa melihat laporan yang dibuat di halaman laporan</p>
 
-
-            <a href="{{ route('report.my-report') }}" class="btn btn-primary py-2 px-4">
+            <!-- ini buat kalau User tekan Lihat Laporan dia langsung menuju ke halaman Laporan dengan status terkirim -->
+            <a href="{{ route('report.my-report', ['status' => 'delivered']) }}" class="btn btn-primary py-2 px-4">
                 Lihat Laporan
             </a>
         </div>
