@@ -40,6 +40,32 @@ class ReportRepository implements ReportRepositoryInterface
         return Report::where('resident_id', $residentId)->latest()->get();
     }
 
+    public function getActiveReportsCountByResident(int $residentId)
+    {
+        return Report::where('resident_id', $residentId)
+            ->whereHas('reportStatuses', function (Builder $query) {
+                $query->whereIn('status', ['delivered', 'progress'])
+                    ->whereIn('id', function ($subQuery) {
+                        $subQuery->selectRaw('MAX(id)')
+                            ->from('report_statuses')
+                            ->groupBy('report_id');
+                    });
+            })->count();
+    }
+
+    public function getCompletedReportsCountByResident(int $residentId)
+    {
+        return Report::where('resident_id', $residentId)
+            ->whereHas('reportStatuses', function (Builder $query) {
+                $query->where('status', 'completed')
+                    ->whereIn('id', function ($subQuery) {
+                        $subQuery->selectRaw('MAX(id)')
+                            ->from('report_statuses')
+                            ->groupBy('report_id');
+                    });
+            })->count();
+    }
+
     public function getReportById(int $id)
     {
         return Report::find($id);

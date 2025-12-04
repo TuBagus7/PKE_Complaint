@@ -7,6 +7,8 @@ interface ReportRepositoryInterface{
 
     public function getLatestReports();
     public function getReportsByResident(int $residentId);
+    public function getActiveReportsCountByResident(int $residentId);//untuk menghitung laporan aktif
+    public function getCompletedReportsCountByResident(int $residentId);//untuk menghitung laporan selesai
 
     public function getReportsByResidentId(string $status);
 

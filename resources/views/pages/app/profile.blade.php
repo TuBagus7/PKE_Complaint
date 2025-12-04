@@ -12,7 +12,7 @@
             <div class="col-6">
                 <div class="card profile-stats">
                     <div class="card-body">
-                        <h5 class="card-title">2</h5>
+                        <h5 class="card-title">{{ $activeReports }}</h5>
                         <p class="card-text">Laporan Aktif</p>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-6">
                 <div class="card profile-stats">
                     <div class="card-body">
-                        <h5 class="card-title">3</h5>
+                        <h5 class="card-title">{{ $completedReports }}</h5>
                         <p class="card-text">Laporan Selesai</p>
                     </div>
                 </div>
