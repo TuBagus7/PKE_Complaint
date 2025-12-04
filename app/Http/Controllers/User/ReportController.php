@@ -8,6 +8,7 @@ use App\Interfaces\ReportCategoryRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Interfaces\ReportRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Report;
 
 
 class ReportController extends Controller
@@ -34,14 +35,34 @@ class ReportController extends Controller
         return view('pages.app.report.index', compact('reports'));
     }
 
-    public function myReport(Request $request){ 
-        $reports = $this->reportRepository->getReportsByResidentId($request-> status);
-        return view('pages.app.report.my-report', compact('reports'));
+    public function myReport(Request $request)
+{
+    $residentId = Auth::user()->resident->id;
+
+    // Jika ada filter status
+    if ($request->filled('status')) {
+        $reports = $this->reportRepository->getReportsByResidentIdAndStatus($residentId, $request->status);
+    } else {
+        $reports = $this->reportRepository->getReportsByResidentId($residentId);
     }
+
+    return view('pages.app.report.my-report', compact('reports'));
+}
+
 
 
     public function show($code){
         $report = $this->reportRepository->getReportByCode($code);
+        
+        // DEBUG: Check what code is received and if report is found
+        if (!$report) {
+             dd([
+                'status' => 'Report Not Found',
+                'input_code' => $code,
+                'report_result' => $report
+            ]);
+        }
+        
         return view('pages.app.report.show', compact('report'));
     }
 

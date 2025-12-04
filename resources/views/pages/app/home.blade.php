@@ -29,8 +29,11 @@
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
-                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-full h-auto object-fit:contain">
-                                
+                                <div style="width: 100%; height: 160px; overflow: hidden; border-radius: 12px;">
+                                    <img src="{{ asset('storage/' . $report->image) }}" 
+                                         alt="" 
+                                         style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 @if ($report->reportStatuses->last()->status == 'delivered')
                                     <div class="badge-status accepted">Diterima</div>
                                 @endif

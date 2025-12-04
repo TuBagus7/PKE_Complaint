@@ -59,7 +59,7 @@
             <div class="mt-4">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none;">
                     @csrf
-                </form>">
+                </form>
                 <button class="btn btn-outline-danger w-100 rounded-pill" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     Keluar
                 </button>

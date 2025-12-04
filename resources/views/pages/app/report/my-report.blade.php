@@ -34,7 +34,7 @@
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
-                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-full h-auto object-fit:contain">
+                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-100 h-auto" style="object-fit: cover; height: 200px;">
                                 
                                 @if ($report->reportStatuses->last()->status == 'delivered')
                                     <div class="badge-status accepted">Diterima</div>
@@ -81,7 +81,7 @@
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
-                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-full h-auto object-fit:contain">
+                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-100 h-auto" style="object-fit: cover; height: 200px;">
                                 
                                 @if ($report->reportStatuses->last()->status == 'delivered')
                                     <div class="badge-status accepted">Diterima</div>
@@ -127,7 +127,7 @@
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
-                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-full h-auto object-fit:contain">
+                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-100 h-auto" style="object-fit: cover; height: 200px;">
                                 
                                 @if ($report->reportStatuses->last()->status == 'delivered')
                                     <div class="badge-status accepted">Diterima</div>
@@ -173,7 +173,7 @@
                     <a href="{{ route('report.show', $report->code) }}" class="text-decoration-none text-dark">
                         <div class="card-body p-0">
                             <div class="card-report-image position-relative mb-2">
-                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-full h-auto object-fit:contain">
+                                <img src="{{ asset('storage/' . $report->image) }}" alt="" class="w-100 h-auto" style="object-fit: cover; height: 200px;">
                                 
                                 @if ($report->reportStatuses->last()->status == 'delivered')
                                     <div class="badge-status accepted">Diterima</div>

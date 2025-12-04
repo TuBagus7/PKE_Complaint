@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Report;
 use Illuminate\Http\Request;
 use App\Interfaces\ReportCategoryRepositoryInterface;
 use App\Interfaces\ReportRepositoryInterface;
+use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->reportCategoryRepository->getAllReportCategories();
-        $reports = $this->reportRepository->getLatestReports();
+        $reports = $this->reportRepository->getReportsByResident(Auth::user()->resident->id);
         return view('pages.app.home', compact('categories', 'reports'));
     }
 

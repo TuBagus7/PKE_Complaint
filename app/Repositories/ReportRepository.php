@@ -35,6 +35,11 @@ class ReportRepository implements ReportRepositoryInterface
         return Report::latest()->get()->take(5);
     }
 
+    public function getReportsByResident(int $residentId)
+    {
+        return Report::where('resident_id', $residentId)->latest()->get();
+    }
+
     public function getReportById(int $id)
     {
         return Report::find($id);

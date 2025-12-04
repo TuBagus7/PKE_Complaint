@@ -8,7 +8,7 @@
                 <img src="{{asset('assets/app/images/icons/ArrowLeft.svg')}}" alt="arrow-left">
             </a>
 
-            <h1>Detail Laporan {{$report -> name}}</h1>
+            <h1>Detail Laporan {{$report -> title}}</h1>
         </div>
 
         <img src="{{asset('storage/' . $report->image)}}" alt="" class="report-image mt-5">
@@ -69,25 +69,25 @@
                         <span class="me-2">
                             :
                         </span>
-                         @if ($report->reportStatuses->last()->status == 'delivered')
+                         @if (optional($report->reportStatuses->last())->status == 'delivered')
                         <div class="badge-pending ">
                             <img src="{{asset('assets/app/images/icons/CircleNotch.svg')}}" alt="pending">
                             <p>Diterima</p>
                         </div>
                         @endif
-                        @if ($report->reportStatuses->last()->status == 'progress')
+                        @if (optional($report->reportStatuses->last())->status == 'progress')
                         <div class="badge-pending">
                             <img src="{{asset('assets/app/images/icons/CircleNotch.svg')}}" alt="pending">
                             <p>Diproses</p>
                         </div>
                         @endif
-                        @if ($report->reportStatuses->last()->status == 'completed')
+                        @if (optional($report->reportStatuses->last())->status == 'completed')
                         <div class="badge-success">
                             <img src="{{asset('assets/app/images/icons/Checks.svg')}}" alt="pending">
                             <p>Selesai</p>
                         </div>
                         @endif
-                        @if ($report->reportStatuses->last()->status == 'rejected')
+                        @if (optional($report->reportStatuses->last())->status == 'rejected')
                         <div class="badge-danger">
                             <img src="{{asset('assets/app/images/icons/Xmark.svg')}}" alt="rejected">
                             <p>Ditolak</p>
