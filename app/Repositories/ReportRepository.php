@@ -104,4 +104,18 @@ class ReportRepository implements ReportRepositoryInterface
         $report = $this->getReportById($id);
         return $report->delete();
     }
+
+
+    public function getReportsByResidentIdAndStatus(int $residentId, string $status)
+    {
+        return Report::where('resident_id', $residentId)
+        ->whereHas('reportStatuses', function (Builder $query) use ($status) {
+            $query->where('status', $status)
+                ->whereIn('id', function ($subQuery) {
+                    $subQuery->selectRaw('MAX(id)')
+                        ->from('report_statuses')
+                        ->groupBy('report_id');
+                });
+        })->get();
+    }
 }

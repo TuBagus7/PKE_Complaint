@@ -24,4 +24,6 @@ interface ReportRepositoryInterface{
     public function updateReport(int $id, array $data);
 
     public function deleteReport(int $id);
+
+    public function getReportsByResidentIdAndStatus(int $residentId, string $status);
 }
